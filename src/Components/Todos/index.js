@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import Item from "../Item";
-import Card, { CardTitle, CardContent } from "../Card";
+import Card, { CardTitle, CardContent } from "../StyledComponents/Card";
 import { connect } from "react-redux";
 import { updateAction, deleteAction } from "../Redux/Actions";
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateAction: (index, value) => dispatch(updateAction(index, value)),
   deleteAction: (index) => dispatch(deleteAction(index)),
 });
-class Todos extends Component {
+class Todos extends React.Component {
   render() {
     const { todos } = this.props;
 
@@ -25,7 +25,8 @@ class Todos extends Component {
     return (
       <Card>
         <CardTitle>
-          you have {todos.length} {todos.length == 1 ? "todo" : "todos"}
+          {todos.length === 0 ? "no " : `you have ${todos.length}`}
+          {todos.length === 1 ? " todo" : " todos"}
         </CardTitle>
         <CardContent>
           {todos.map((item, index) => {

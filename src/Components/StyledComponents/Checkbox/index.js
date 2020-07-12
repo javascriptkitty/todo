@@ -4,6 +4,7 @@ import styled from "styled-components";
 const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
+  margin-right: 10px;
 `;
 
 const CheckedIcon = styled.svg`
