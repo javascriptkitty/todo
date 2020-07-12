@@ -1,20 +1,19 @@
 // action creators
 
-export const updateAction = (index, checked, name) => {
+export const updateAction = (index, checked) => {
   return {
     type: "update",
     index,
     checked,
-    name,
   };
 };
 
-export const addAction = (index, checked, name) => {
+export const addAction = (text) => {
   return {
     type: "add",
-    index,
-    name,
-    checked,
+
+    name: text,
+    checked: false,
   };
 };
 export const deleteAction = (index) => {

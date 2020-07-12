@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Container } from "@material-ui/core";
 
-import AddTodo from "../src/Components/AddTodo";
-import Todos from "../src/Components/Todos";
+import AddTodo from "./Components/AddTodo";
+import Todos from "./Components/Todos";
 import "./App.css";
 
 const Title = styled.h1`
@@ -17,15 +16,11 @@ const Title = styled.h1`
 export default class App extends Component {
   render() {
     return (
-      <Container className="App">
+      <div className="App">
         <Title>Amazing TODO list</Title>
-        <AddTodo onAdd={(text) => console.log(text)} />
-        <Todos
-          todos={[{ name: "do dishes", checked: false }]}
-          onItemChecked={(el) => console.log(el)}
-          onItemClick={(el) => console.log(el)}
-        />
-      </Container>
+        <AddTodo />
+        <Todos />
+      </div>
     );
   }
 }

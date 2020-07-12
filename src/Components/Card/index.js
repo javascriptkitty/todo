@@ -9,7 +9,10 @@ const CardWrapper = styled.div`
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), 0 0px 40px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  background: ${(props) => props.cardColor || "#b9d9eb"};
+
+  background: ${(props) =>
+    props.cardColor ||
+    "radial-gradient(ellipse,  rgba(185,217,235,1) 0%,  RGB(185,217,235,0.6) 100% )"};
 `;
 
 const CardHeader = styled.header`

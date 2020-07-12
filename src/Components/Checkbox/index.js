@@ -6,9 +6,9 @@ const CheckboxContainer = styled.div`
   vertical-align: middle;
 `;
 
-const checkedIcon = styled.svg`
+const CheckedIcon = styled.svg`
   fill: none;
-  stroke: white;
+  stroke: #4e6096;
   stroke-width: 2px;
 `;
 // Hide checkbox visually but remain accessible to screen readers.
@@ -30,7 +30,7 @@ const StyledCheckbox = styled.div`
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 2px solid salmon;
+  border: 2px solid #4e6096;
   border-radius: 3px;
   transition: all 150ms;
 
@@ -38,7 +38,7 @@ const StyledCheckbox = styled.div`
     box-shadow: 0 0 0 3px pink;
   }
 
-  ${checkedIcon} {
+  ${CheckedIcon} {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
   }
 `;
@@ -47,9 +47,9 @@ const Checkbox = ({ className, checked, ...props }) => (
   <CheckboxContainer className={className}>
     <HiddenCheckbox checked={checked} {...props} />
     <StyledCheckbox checked={checked}>
-      <checkedIcon viewBox="0 0 24 24">
+      <CheckedIcon viewBox="0 0 24 24">
         <polyline points="20 6 9 17 4 12" />
-      </checkedIcon>
+      </CheckedIcon>
     </StyledCheckbox>
   </CheckboxContainer>
 );

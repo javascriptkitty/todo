@@ -1,14 +1,18 @@
 const itemReducer = (state = [], action) => {
-  const { index, name } = action;
   const newState = [...state];
+  if (action == null) {
+    return state;
+  }
   switch (action.type) {
     case "update":
-      newState[index].name = name;
+      newState[action.index].checked = action.checked;
       return newState;
     case "add":
-      return newState.push({ index, name });
+      newState.push({ index: state.length, name: action.name });
+      return newState;
     case "delete":
-      return newState.splice(index, 1);
+      newState.splice(action.index, 1);
+      return newState;
     default:
       return state;
   }

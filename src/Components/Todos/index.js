@@ -1,30 +1,40 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import Item from "../Item";
 import Card, { CardTitle, CardContent } from "../Card";
+import { connect } from "react-redux";
+import { updateAction, deleteAction } from "../Redux/Actions";
 
-const Input = styled.input`
-  padding: 0.5em;
-  margin: 0.5em;
-  color: ${(props) => props.inputColor || "palevioletred"};
-  background: SEASHELL;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
+const mapStateToProps = (state) => ({
+  todos: state,
+});
 
-export default class Todos extends Component {
+const mapDispatchToProps = (dispatch) => ({
+  updateAction: (index, value) => dispatch(updateAction(index, value)),
+  deleteAction: (index) => dispatch(deleteAction(index)),
+});
+class Todos extends Component {
   render() {
+    const { todos } = this.props;
+
+    const updateTodo = (index, value) => {
+      this.props.updateAction(index, value);
+    };
+    const deleteTodo = (index) => {
+      this.props.deleteAction(index);
+    };
     return (
       <Card>
-        <CardTitle>todos</CardTitle>
+        <CardTitle>
+          you have {todos.length} {todos.length == 1 ? "todo" : "todos"}
+        </CardTitle>
         <CardContent>
-          {this.props.todos.map((item, index) => {
+          {todos.map((item, index) => {
             return (
               <Item
                 key={index}
                 item={item}
-                onClick={this.props.onItemClick(index)}
-                onChecked={this.props.onItemChecked}
+                onChecked={updateTodo.bind(this, index)}
+                onDelete={deleteTodo.bind(this, index)}
               />
             );
           })}
@@ -33,3 +43,5 @@ export default class Todos extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);

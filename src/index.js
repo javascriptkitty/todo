@@ -5,9 +5,9 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import itemReducer from "./Components/Reducers/itemReducer";
+import itemReducer from "./Components/Redux/Reducers/itemReducer";
 
-const todoList = [{ checked: false, name: "fix bike" }];
+const todoList = [{ checked: true, name: "fix bike", index: 0 }];
 const store = createStore(itemReducer, todoList);
 
 ReactDOM.render(
